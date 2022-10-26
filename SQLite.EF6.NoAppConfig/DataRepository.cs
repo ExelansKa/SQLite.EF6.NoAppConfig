@@ -24,6 +24,12 @@ namespace SQLite.EF6.NoAppConfig
         public DataRepository(string databasePath = null)
         {
             _context = new RepositoryContext(databasePath);
+
+            _context.Database.CreateIfNotExists();
+
+            _context.Database.Initialize(true);
+
+            _context.SaveChanges();
         }
         
         public void AddPerson(string name)

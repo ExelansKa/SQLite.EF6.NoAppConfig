@@ -22,7 +22,8 @@ namespace SQLite.EF6.NoAppConfig.Model
             }, true)
         {
             // Turn off the Migrations, this is not a code first database.
-            System.Data.Entity.Database.SetInitializer<RepositoryContext>(null);
+            //System.Data.Entity.Database.SetInitializer<RepositoryContext>(null);
+            System.Data.Entity.Database.SetInitializer<RepositoryContext>(new CreateDatabaseIfNotExists<RepositoryContext>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
